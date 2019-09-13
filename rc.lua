@@ -77,12 +77,13 @@ local themes = {
 local chosen_theme = themes[11]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xterm"
-local editor       = os.getenv("EDITOR") or "nano"
+local terminal     = "urxvtc" or "xterm"
+local editor       = os.getenv("EDITOR") or "nvim"
 local gui_editor   = "gvim"
-local browser      = "firefox"
+local browser      = "google-chrome-stable"
 local guieditor    = "atom"
 local scrlocker    = "xlock"
+local filemanager  = "thunar"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
