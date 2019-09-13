@@ -71,9 +71,10 @@ local themes = {
     "rainbow",         -- 8
     "steamburn",       -- 9
     "vertex",          -- 10
+    "powerarrow-personal", -- 11
 }
 
-local chosen_theme = themes[5]
+local chosen_theme = themes[11]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "xterm"
@@ -488,7 +489,7 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "x", function ()
         awful.spawn(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-		end,
+    end,
         {description = "show dmenu", group = "launcher"})
     --]]
     -- Prompt
