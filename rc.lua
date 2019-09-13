@@ -640,6 +640,8 @@ awful.rules.rules = {
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
+    { rule = { class = "URxvt" },
+          properties = { opacity = 0.92 } },
 }
 -- }}}
 
