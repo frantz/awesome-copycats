@@ -74,6 +74,7 @@ theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
 theme.widget_task                               = theme.dir .. "/icons/task.png"
 theme.widget_scissors                           = theme.dir .. "/icons/scissors.png"
+theme.widget_clock                              = theme.dir .. "/icons/clock.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 theme.useless_gap                               = 0
@@ -99,18 +100,19 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 local markup = lain.util.markup
 local separators = lain.util.separators
 
--- Binary clock
-local binclock = require("themes.powerarrow.binclock"){
-    height = 16,
-    show_seconds = true,
-    color_active = theme.fg_normal,
-    color_inactive = theme.bg_focus
-}
+-- Textclock
+local clockicon = wibox.widget.imagebox(theme.widget_clock)
+local clock = awful.widget.watch(
+    "date +'%a %d %b %R'", 60,
+    function(widget, stdout)
+        widget:set_markup(" " .. markup.font(theme.font, stdout))
+    end
+)
 
 -- Calendar
 theme.cal = lain.widget.calendar({
-    --cal = "cal --color=always",
-    attach_to = { binclock.widget },
+    cal = "/usr/bin/cal --color=always -m",
+    attach_to = { clock },
     notification_preset = {
         font = "xos4 Terminus 10",
         fg   = theme.fg_normal,
